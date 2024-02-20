@@ -20,10 +20,10 @@ class HHParser:
             employers.append({"id": employer["id"], "name": employer["name"]})
         return employers
 
-    def get_vacancies_from_company(self, employer_id):
+    def get_vacancies_from_company(self, id):
         params = {
             'per_page': 20,
-            'employer_id': employer_id
+            'employer_id': id
         }
         response = requests.get('https://api.hh.ru/vacancies/', params)
         if response.status_code == 200:
@@ -51,7 +51,6 @@ class HHParser:
                 "name": vacancy["name"],
                 "salary_from": salary_from,
                 "salary_to": salary_to,
-                "published_at": vacancy["published_at"],
                 "url": vacancy["alternate_url"],
                 "area": vacancy["area"],
                 "employer": vacancy["employer"]["id"]
@@ -59,5 +58,5 @@ class HHParser:
         return filter_data
 
 
-hh = HHParser()
-print(hh.filter_vacancies())
+#hh = HHParser()
+#print(hh.filter_vacancies())
