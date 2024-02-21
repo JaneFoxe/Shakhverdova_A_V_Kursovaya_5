@@ -52,7 +52,7 @@ class HHParser:
                 "salary_from": salary_from,
                 "salary_to": salary_to,
                 "url": vacancy["alternate_url"],
-                "area": vacancy["area"],
+                "area": vacancy["area"]["name"],
                 "employer": vacancy["employer"]["id"]
             })
         return filter_data
