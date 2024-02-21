@@ -3,13 +3,6 @@ import psycopg2
 from classes.hh_parser import HHParser
 from config import config
 
-from psycopg2.extensions import register_adapter, AsIs
-import json
-
-
-def adapt_dict(dict_var):
-    return AsIs("'" + json.dumps(dict_var) + "'")
-
 
 def create_database(db_name):
     conn = psycopg2.connect(dbname="postgres", **config())
@@ -61,7 +54,6 @@ def insert_data_into_tables(db_name):
     conn.close()
 
 
-register_adapter(dict, adapt_dict)
 create_database("course_work5")
 create_table("course_work5")
 insert_data_into_tables("course_work5")
